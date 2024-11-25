@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ведомость</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #003366;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00509e;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #e6f2ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #00509e;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .place-block {
+            background-color: #cce7ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .place-block label {
+            color: #003366;
+        }
+
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #003366;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <h1>создание упаковочной ведомости</h1>
+    <form id="order-form">
+        <label for="order-number">Номер заказа:</label>
+        <input type="text" id="order-number" placeholder="Введите номер заказа" required>
+
+        <label for="recipient">Грузополучатель:</label>
+        <input type="text" id="recipient" placeholder="Введите имя грузополучателя" required>
+
+        <div id="places-container">
+            <div class="place-block">
+                <label>Место №:</label>
+                <input type="text" class="place-number" placeholder="Введите номер места" required>
+                <div class="articles-container">
+                    <div class="article-block">
+                        <label>Артикул/Наименование:</label>
+                        <input type="text" class="article" placeholder="Введите артикул/наименование" required>
+                    </div>
+                </div>
+                <button type="button" onclick="addArticle(this)">Добавить артикул</button>
+            </div>
+        </div>
+        <button type="button" onclick="addPlace()">Добавить место</button><br><br>
+        <button type="button" onclick="generateReport()">Сформировать отчет</button>
+    </form>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</body>
+</html>
